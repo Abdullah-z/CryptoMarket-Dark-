@@ -14,8 +14,10 @@ function Header(props) {
               src="https://cryptologos.cc/logos/icon-icx-logo.png"
               className="w-12 h-12 rounded-full flex-shrink-0 object-cover object-center"
             ></img>
-
-            <span className="ml-3 text-xl">CryptoMarket</span>
+ <NavLink to="/" className=" hover:text-white">
+ <span className="ml-3 text-xl">CryptoMarket</span>      
+            </NavLink>
+            
           </a>
           <nav className="md:ml-auto flex flex-wrap items-center text-base justify-center">
             <NavLink to={props.link} className="mx-4 mr-5 hover:text-white">
