@@ -27,37 +27,40 @@ const CoinPage = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  if (!coin) return <LinearProgress style={{ backgroundColor: lightBlue }} />;
+ var pcurrency=  "." + currency.toLowerCase()
+ console.log(pcurrency)
 
+
+  if (!coin) return <LinearProgress style={{ backgroundColor: lightBlue }} />;
   return (
     <section className="text-gray-400 bg-gray-900 body-font">
       <Header link="/" view="Home"></Header>
 
-      <div class="container px-5 py-4 mx-auto flex flex-wrap">
-        <div class="flex flex-wrap w-full">
-          <div class="lg:w-2/5 md:w-1/2 md:pr-10 md:py-6">
-            <div class="container mx-auto flex px-5 py-4 items-center justify-center flex-col">
+      <div className="container px-5 py-4 mx-auto flex flex-wrap">
+        <div className="flex flex-wrap w-full">
+          <div className="lg:w-2/5 md:w-1/2 md:pr-10 md:py-6">
+            <div className="container mx-auto flex px-5 py-4 items-center justify-center flex-col">
               <img
-                class="lg:w-2/6 md:w-3/6 w-5/6 mb-10 object-cover object-center rounded"
+                className="lg:w-2/6 md:w-3/6 w-5/6 mb-10 object-cover object-center rounded"
                 alt="hero"
                 src={coin?.image.large}
               />
-              <div class=" lg:w-2/3 w-full">
-                <h1 class="title-font sm:text-4xl text-3xl mb-4 font-medium text-white">
+              <div className=" lg:w-2/3 w-full">
+                <h1 className="title-font sm:text-4xl text-3xl mb-4 font-medium text-white">
                   {coin?.name}
                 </h1>
-                <p class="leading-relaxed mb-8">
+                <p className="leading-relaxed mb-8">
                   {ReactHtmlParser(coin?.description.en.split(". ")[0])}
                 </p>
 
-                <h1 class="title-font sm:text-2xl text-2xl mb-4 font-medium text-white">
+                <h1 className="title-font sm:text-2xl text-2xl mb-4 font-medium text-white">
                   Current Price: {symbol}
                   {numberWithCommas(
                     coin?.market_data.current_price[currency.toLowerCase()]
                   )}
                 </h1>
 
-                <h1 class="title-font sm:text-2xl text-2xl mb-4 font-medium text-white">
+                <h1 className="title-font sm:text-2xl text-2xl mb-4 font-medium text-white">
                   Market Capital: {symbol}
                   {numberWithCommas(
                     coin?.market_data.market_cap[currency.toLowerCase()]
@@ -69,27 +72,27 @@ const CoinPage = () => {
               </div>
             </div>
           </div>
-          <div class="lg:w-3/5 md:w-1/2 object-cover object-center rounded-lg md:mt-0 mt-12">
+          <div className="lg:w-3/5 md:w-1/2 object-cover object-center rounded-lg md:mt-0 mt-12">
             <CoinInfo coin={coin} />
           </div>
         </div>
       </div>
 
-      <div class="container px-5 py-4 mx-auto">
-        <div class="flex flex-col text-center w-full mb-20">
-          <h1 class="sm:text-3xl text-2xl font-medium title-font mb-4 text-white">
+      <div className="container px-5 py-4 mx-auto">
+        <div className="flex flex-col text-center w-full mb-20">
+          <h1 className="sm:text-3xl text-2xl font-medium title-font mb-4 text-white">
             Percentage Price Change
           </h1>
         </div>
 
-        <div class="flex flex-wrap -m-4 text-center">
-          <div class="p-4 md:w-1/6 sm:w-1/2 w-full">
-            <div class="bg-gray-800 bg-opacity-40 border-2 border-gray-800 px-4 py-6 rounded-lg">
+        <div className="flex flex-wrap -m-4 text-center">
+          <div className="p-4 md:w-1/6 sm:w-1/2 w-full">
+            <div className="bg-gray-800 bg-opacity-40 border-2 border-gray-800 px-4 py-6 rounded-lg">
               {coin.market_data.price_change_percentage_1h_in_currency.usd <
               0 ? (
                 <h2 className="text-red-600 title-font font-medium text-3xl">
                   &#9660;{" "}
-                  {coin.market_data.price_change_percentage_7d_in_currency.usd.toFixed(
+                  {coin.market_data.price_change_percentage_1h_in_currency.usd.toFixed(
                     2
                   )}
                   %
@@ -97,17 +100,17 @@ const CoinPage = () => {
               ) : (
                 <h2 className="text-lime-600 title-font font-medium text-3xl">
                   &#9650;{" "}
-                  {coin.market_data.price_change_percentage_7d_in_currency.usd.toFixed(
+                  {coin.market_data.price_change_percentage_1h_in_currency.usd.toFixed(
                     2
                   )}
                   %
                 </h2>
               )}
-              <p class="leading-relaxed">Last 1 Hour</p>
+              <p className="leading-relaxed">Last 1 Hour</p>
             </div>
           </div>
-          <div class="p-4 md:w-1/6 sm:w-1/2 w-full">
-            <div class="bg-gray-800 bg-opacity-40 border-2 border-gray-800 px-4 py-6 rounded-lg">
+          <div className="p-4 md:w-1/6 sm:w-1/2 w-full">
+            <div className="bg-gray-800 bg-opacity-40 border-2 border-gray-800 px-4 py-6 rounded-lg">
               {coin.market_data.price_change_percentage_24h_in_currency.usd <
               0 ? (
                 <h2 className="text-red-600 title-font font-medium text-3xl">
@@ -126,11 +129,11 @@ const CoinPage = () => {
                   %
                 </h2>
               )}
-              <p class="leading-relaxed">Last 24 Hours</p>
+              <p className="leading-relaxed">Last 24 Hours</p>
             </div>
           </div>
-          <div class="p-4 md:w-1/6 sm:w-1/2 w-full">
-            <div class="bg-gray-800 bg-opacity-40 border-2 border-gray-800 px-4 py-6 rounded-lg">
+          <div className="p-4 md:w-1/6 sm:w-1/2 w-full">
+            <div className="bg-gray-800 bg-opacity-40 border-2 border-gray-800 px-4 py-6 rounded-lg">
               {coin.market_data.price_change_percentage_7d_in_currency.usd <
               0 ? (
                 <h2 className="text-red-600 title-font font-medium text-3xl">
@@ -149,11 +152,11 @@ const CoinPage = () => {
                   %
                 </h2>
               )}
-              <p class="leading-relaxed">Last 7 Days</p>
+              <p className="leading-relaxed">Last 7 Days</p>
             </div>
           </div>
-          <div class="p-4 md:w-1/6 sm:w-1/2 w-full">
-            <div class="bg-gray-800 bg-opacity-40 border-2 border-gray-800 px-4 py-6 rounded-lg">
+          <div className="p-4 md:w-1/6 sm:w-1/2 w-full">
+            <div className="bg-gray-800 bg-opacity-40 border-2 border-gray-800 px-4 py-6 rounded-lg">
               {coin.market_data.price_change_percentage_14d_in_currency.usd <
               0 ? (
                 <h2 className="text-red-600 title-font font-medium text-3xl">
@@ -172,11 +175,11 @@ const CoinPage = () => {
                   %
                 </h2>
               )}
-              <p class="leading-relaxed">Last 14 Days</p>
+              <p className="leading-relaxed">Last 14 Days</p>
             </div>
           </div>
-          <div class="p-4 md:w-1/6 sm:w-1/2 w-full">
-            <div class="bg-gray-800 bg-opacity-40 border-2 border-gray-800 px-4 py-6 rounded-lg">
+          <div className="p-4 md:w-1/6 sm:w-1/2 w-full">
+            <div className="bg-gray-800 bg-opacity-40 border-2 border-gray-800 px-4 py-6 rounded-lg">
               {coin.market_data.price_change_percentage_30d_in_currency.usd <
               0 ? (
                 <h2 className="text-red-600 title-font font-medium text-3xl">
@@ -195,12 +198,12 @@ const CoinPage = () => {
                   %
                 </h2>
               )}
-              <p class="leading-relaxed">Last 30 Days</p>
+              <p className="leading-relaxed">Last 30 Days</p>
             </div>
           </div>
 
-          <div class="p-4 md:w-1/6 sm:w-1/2 w-full">
-            <div class="bg-gray-800 bg-opacity-40 border-2 border-gray-800 px-4 py-6 rounded-lg">
+          <div className="p-4 md:w-1/6 sm:w-1/2 w-full">
+            <div className="bg-gray-800 bg-opacity-40 border-2 border-gray-800 px-4 py-6 rounded-lg">
               {coin.market_data.price_change_percentage_1y_in_currency.usd <
               0 ? (
                 <h2 className="text-red-600 title-font font-medium text-3xl">
@@ -219,7 +222,7 @@ const CoinPage = () => {
                   %
                 </h2>
               )}
-              <p class="leading-relaxed">Last 1 Year</p>
+              <p className="leading-relaxed">Last 1 Year</p>
             </div>
           </div>
         </div>

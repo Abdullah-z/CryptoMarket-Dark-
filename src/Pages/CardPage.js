@@ -4,7 +4,7 @@ import Header from "../components/Header";
 import { LinearProgress } from "@material-ui/core";
 import axios from "axios";
 import { CoinList } from "../config/api";
-import { NavLink, useHistory } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import { CryptoState } from "../CryptoContext";
 
 export function numberWithCommas(x) {
@@ -18,7 +18,7 @@ export default function CardPage() {
 
   const { currency, symbol } = CryptoState();
 
-  const navigate = useHistory();
+  
 
   const fetchCoins = async () => {
     setLoading(true);
@@ -72,7 +72,7 @@ export default function CardPage() {
             <div className="container px-5 py-24 mx-auto">
               <div className="flex flex-wrap -m-4 text-center">
                 {handleSearch().map((row) => {
-                  const profit = row.price_change_percentage_24h > 0;
+                  
 
                   return (
                     <div className="p-4 md:w-1/4 sm:w-1/2 w-full">
