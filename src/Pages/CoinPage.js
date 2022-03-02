@@ -72,7 +72,7 @@ const CoinPage = () => {
               </div>
             </div>
           </div>
-          <div className="lg:w-3/5 md:w-1/2 object-cover object-center rounded-lg md:mt-0 mt-12">
+          <div className="lg:w-3/5 md:w-1/2 md:w-1/1  object-cover object-center rounded-lg md:mt-0 mt-12">
             <CoinInfo coin={coin} />
           </div>
         </div>
