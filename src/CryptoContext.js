@@ -12,6 +12,8 @@ const CryptoContext = ({ children }) => {
     else if (currency === "GBP") setSymbol("£");
     else if (currency === "JPY") setSymbol("¥");
     else if (currency === "PKR") setSymbol("Rs.");
+    else if (currency === "RUB") setSymbol("₽");
+    else if (currency === "AUD") setSymbol("$");
   }, [currency]);
 
   return (
